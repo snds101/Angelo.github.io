@@ -1,5 +1,5 @@
 # [Automotive] 
-# A critical zero-click RCE Vulnerability in the in-vehicle infotainment system, the Alpine Halo9 iLX-F509, CVE-2024-23923
+## A critical zero-click RCE Vulnerability in the in-vehicle infotainment system, the Alpine Halo9 iLX-F509, CVE-2024-23923 ##
 
 In his presentation at Hexacon 2024, Mikhail Evdokimov, a Senior Security Researcher at PCAutomotive, detailed a critical zero-click remote code execution (RCE) vulnerability in the Alpine Halo9 iLX-F509 in-vehicle infotainment (IVI) system. This vulnerability, identified as CVE-2024-23923, resides in the device's proprietary Bluetooth stack and can be exploited without any user interaction. 
 
@@ -11,17 +11,17 @@ Exploitation Strategy:
 
 Evdokimov developed a sophisticated exploitation approach, achieving a 96% success rate. Key techniques included:
 
-** Universal Heap Spraying: Manipulating the heap memory layout to favor successful exploitation.
-
-** Arbitrary Address Write (AAW): Utilizing Enhanced Retransmission Mode (ERTM) channel I-frames to perform arbitrary heap writes, even before authentication, by exploiting a heap overflow condition.
-
-** Heap Segment Memory Leak: Employing Logical Link Control and Adaptation Protocol (L2CAP) echo request/response packets to leak heap segment addresses, facilitating memory structure analysis.
-
-** Arbitrary Address Read (AAR): Exploiting ERTM channel S-frame reject protocol data units (REJ PDUs) to modify heap pointers, enabling reading of arbitrary memory locations.
-
-** Return-Oriented Programming (ROP) Chain Creation: Constructing an ROP chain on the stack to execute system-level commands.
-
-These methods culminated in a highly reliable zero-click RCE exploit. 
+  * Universal Heap Spraying: Manipulating the heap memory layout to favor successful exploitation.
+  
+  * Arbitrary Address Write (AAW): Utilizing Enhanced Retransmission Mode (ERTM) channel I-frames to perform arbitrary heap writes, even before authentication, by exploiting a heap overflow condition.
+  
+  * Heap Segment Memory Leak: Employing Logical Link Control and Adaptation Protocol (L2CAP) echo request/response packets to leak heap segment addresses, facilitating memory structure analysis.
+  
+  * Arbitrary Address Read (AAR): Exploiting ERTM channel S-frame reject protocol data units (REJ PDUs) to modify heap pointers, enabling reading of arbitrary memory locations.
+  
+  * Return-Oriented Programming (ROP) Chain Creation: Constructing an ROP chain on the stack to execute system-level commands.
+  
+  These methods culminated in a highly reliable zero-click RCE exploit. 
 
 Security Implications:
 
