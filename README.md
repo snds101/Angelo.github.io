@@ -3,11 +3,11 @@
 
 In his presentation at Hexacon 2024, Mikhail Evdokimov, a Senior Security Researcher at PCAutomotive, detailed a critical zero-click remote code execution (RCE) vulnerability in the Alpine Halo9 iLX-F509 in-vehicle infotainment (IVI) system. This vulnerability, identified as CVE-2024-23923, resides in the device's proprietary Bluetooth stack and can be exploited without any user interaction. 
 
-Discovery and Analysis:
+**Discovery and Analysis:**
 
 The research commenced with extractng the firmware from the device's eMMC chip, facilitated by the presence of debug symbols in the production firmware. This enabled a comprehensive reverse-engineering of the Bluetooth stack, leading to the identification of a use-after-free (UAF) vulnerability within the Host Controller Interface (HCI) Asynchronous Connection-Oriented Logical Link (ACL) handling code. Notably, this flaw can be triggered before Bluetooth authentication, broadening the attack surface significantly. 
 
-Exploitation Strategy:
+**Exploitation Strategy:**
 
 Evdokimov developed a sophisticated exploitation approach, achieving a 96% success rate. Key techniques included:
 
@@ -23,6 +23,6 @@ Evdokimov developed a sophisticated exploitation approach, achieving a 96% succe
   
   These methods culminated in a highly reliable zero-click RCE exploit. 
 
-Security Implications:
+**Security Implications:**
 
 This vulnerability underscores the risks associated with proprietary implementations of standard technologies like Bluetooth. The absence of essential security mitigations—such as stack canaries, Address Space Layout Randomization (ASLR), and the inclusion of debug symbols in production firmware—rendered the system particularly susceptible to exploitation. The vendor's decision to "share the risk" by not releasing a patch highlights the necessity for adopting secure, industry-standard protocols and robust cybersecurity measures in automotive systems.
